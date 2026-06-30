@@ -86,7 +86,7 @@ export class PredictionService {
         where: { name: data.location },
         data: { riskLevel },
       });
-    } catch (e) {
+    } catch {
       // Ignored if community doesn't exist yet
     }
 

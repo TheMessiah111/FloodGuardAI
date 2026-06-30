@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { DashboardService } from '@/services/DashboardService';
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const stats = await DashboardService.getDashboardStats();
     return NextResponse.json(stats);

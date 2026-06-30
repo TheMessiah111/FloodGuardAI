@@ -25,7 +25,7 @@ export default function MapPage() {
     try {
       const res = await axios.get('/api/communities');
       setCommunities(res.data);
-    } catch (err: any) {
+    } catch {
       setError('Failed to retrieve community markers. Please try again.');
     } finally {
       setLoading(false);

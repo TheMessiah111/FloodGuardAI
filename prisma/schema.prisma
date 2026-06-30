@@ -1,6 +1,7 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 generator client {
@@ -39,6 +40,8 @@ model Prediction {
   recommendedAction String
   createdAt         DateTime @default(now())
   alerts            Alert[]
+
+  @@index([userId])
 }
 
 model Alert {
@@ -50,6 +53,8 @@ model Alert {
   message      String
   isRead       Boolean  @default(false)
   createdAt    DateTime @default(now())
+
+  @@index([predictionId])
 }
 
 model Weather {

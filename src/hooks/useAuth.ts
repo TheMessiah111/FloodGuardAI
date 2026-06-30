@@ -15,7 +15,7 @@ export function useAuth() {
       if (storedUser) {
         try {
           setUser(JSON.parse(storedUser));
-        } catch (e) {
+        } catch {
           localStorage.removeItem('floodguard_user');
         }
       }

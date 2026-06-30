@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Community } from '@/types';
 import 'leaflet/dist/leaflet.css';
 
 export function FloodMap({ communities }: { communities: Community[] }) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<any>(null);
-  const [leafletLoaded, setLeafletLoaded] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && mapRef.current && !mapInstance.current) {
@@ -74,7 +73,6 @@ export function FloodMap({ communities }: { communities: Community[] }) {
             .addTo(map);
         });
 
-        setLeafletLoaded(true);
       });
     }
 

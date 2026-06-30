@@ -1,5 +1,5 @@
 import prisma from '@/lib/prisma';
-import { hashPassword, comparePassword } from '@/lib/auth';
+import { hashPassword } from '@/lib/auth';
 
 export class AuthService {
   static async register(data: {
