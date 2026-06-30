@@ -13,7 +13,7 @@ import Link from 'next/link';
 export function RegisterForm() {
   const router = useRouter();
   const { register } = useAuth();
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +23,7 @@ export function RegisterForm() {
     lga: '',
     community: '',
   });
-  
+
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -66,7 +66,7 @@ export function RegisterForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { name, email, password, phone, state, lga, community } = formData;
-    
+
     if (!name || !email || !password || !phone || !state || !lga || !community) {
       setError('Please fill in all fields.');
       return;
@@ -99,12 +99,12 @@ export function RegisterForm() {
               {error}
             </div>
           )}
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Full Name"
               name="name"
-              placeholder="e.g. Samuel Adebayo"
+              placeholder="e.g. Promise Daniel"
               value={formData.name}
               onChange={handleChange}
               required
@@ -113,7 +113,7 @@ export function RegisterForm() {
               label="Email Address"
               name="email"
               type="email"
-              placeholder="samuel@mail.com"
+              placeholder="promisedaniel@mail.com"
               value={formData.email}
               onChange={handleChange}
               required
