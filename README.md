@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FloodGuard AI
 
-## Getting Started
+An AI-based Early Warning System for Flood Prediction and Hazard Management in Nigerian Communities. Built as a Computer Science final-year research project.
 
-First, run the development server:
+## Project Abstract
+FloodGuard AI is a lightweight, responsive web application designed to demonstrate the application of software engineering principles and heuristic model simulation in flood management. The system aggregates hydrometeorological parameters (rainfall, river level, soil moisture, humidity, wind speed, temperature) to calculate regional flood risk indices in real time. If warning thresholds are breached, the system auto-triggers alerts for municipal planning agencies, safety services (NEMA), and local communities.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Technical Architecture
+This project implements a feature-based modular folder structure built upon Next.js 15, TypeScript, Tailwind CSS, Prisma ORM, and PostgreSQL.
+
+### Core Stack
+- **Frontend Framework**: Next.js 15 (App Router)
+- **State & Forms**: React Hook Form, Zod schemas, Axios
+- **Charts & Spatial Maps**: Leaflet.js (OpenStreetMap), Recharts
+- **Database & Auth**: Prisma ORM, PostgreSQL database connection, JWT session tokens, Bcrypt password hashing
+- **UI Design**: Authoritative navy-blue and public safety green theme, responsive cards, and clean typography
+
+---
+
+## Folder Structure
+```
+prisma/
+  └── schema.prisma        # Database models & relationships
+src/
+  ├── app/                 # Page routes and API route handlers
+  ├── components/          # Reusable UI component modules
+  │   ├── layout/          # Desktop/Mobile Navigation and Footer layouts
+  │   ├── common/          # Shared generic atoms (Buttons, Cards, Inputs, Modals)
+  │   ├── auth/            # Registration and Login forms
+  │   ├── dashboard/       # Aggregated stats, summaries, charts
+  │   ├── prediction/      # Prediction forms, meters, results
+  │   ├── weather/         # Telemetry cards and metric summaries
+  │   ├── map/             # Client-side Leaflet GIS visual maps
+  │   ├── alerts/          # Alert lists and acknowledgement cards
+  │   ├── analytics/       # Chart trends and model performance reports
+  │   └── emergency/       # Rescue directories and calling interfaces
+  ├── hooks/               # useAuth, usePrediction, useWeather, etc.
+  ├── services/            # Database Query and business logic layer
+  ├── types/               # TypeScript interfaces
+  └── lib/                 # Shared utils (auth helpers, client instances)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Heuristic Risk Index Formula
+The predictive logic in `PredictionService.ts` simulates a classifiers heuristic by applying weighted indices to key environmental factors:
+- **Rainfall (35%)**: Evaluates millimeter precipitation (capped at 150mm).
+- **River Runoff Level (35%)**: Gauges river elevation in meters (capped at 8m).
+- **Soil Moisture (15%)**: Assesses soil water saturation percentage.
+- **Atmospheric Humidity (5%)**: Measures environmental moisture.
+- **Wind Speed (10%)**: Registers wind velocities in km/h.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+$$\text{Risk \%} = \min\left(35, \frac{\text{Rainfall}}{150} \times 35\right) + \min\left(35, \frac{\text{River Level}}{8} \times 35\right) + \text{Moisture} \times 0.15 + \text{Humidity} \times 0.05 + \min\left(10, \frac{\text{Wind}}{60} \times 10\right)$$
 
-## Learn More
+### Risk Classifications
+- **LOW (< 35%)**: System clear. Standard safety conditions.
+- **MEDIUM (35% – 64%)**: Moderate risk. Clean drainages and prepare loose outdoor items.
+- **HIGH (65% – 79%)**: Significant threat. Secure valuables to higher elevations.
+- **CRITICAL (≥ 80%)**: Active hazard. Auto-creates alert warnings. Evacuate to high ground.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation & Configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+- Node.js (v18.x or later)
+- PostgreSQL database instance
 
-## Deploy on Vercel
+### 1. Environment Configuration
+Create a `.env` file in the root directory (a default `.env` template has been generated):
+```env
+# PostgreSQL Database Connection
+DATABASE_URL="postgresql://postgres:YOUR_POSTGRES_PASSWORD@localhost:5432/floodguard?schema=public"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# JWT Configuration
+JWT_SECRET="floodguard_ai_secret_key_2026_nigeria"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Dependency Installation
+Since the execution sandbox requires offline compatibility, run:
+```bash
+npm install --legacy-peer-deps
+```
+*Note: We use `--legacy-peer-deps` to guarantee clean package alignment with React 19.*
+
+### 3. Database Migration
+Synchronize your PostgreSQL database with the Prisma schema layout:
+```bash
+npx prisma db push
+```
+
+### 4. Application Seeding
+You do not need to run manual seed commands. **FloodGuard AI features database self-seeding**. 
+Upon logging into the dashboard for the first time, `DashboardService.ts` checks if records are empty and automatically populates the database with:
+- An administrator/researcher account (`admin@floodguard.gov.ng` | password: `password123`)
+- Initial geographic coordinates for flood-prone Nigerian communities (Lokoja, Makurdi, Yenagoa, Patani, Ibaji, Onitsha, Lagos Island, Baro)
+- Mock weather station telemetry records
+- Historical prediction run metrics and warning alerts to fill the analytics graphs
+
+---
+
+## Running the Application
+To launch the Next.js local development server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your web browser to explore.
