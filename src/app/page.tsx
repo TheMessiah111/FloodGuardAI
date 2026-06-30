@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ShieldAlert, Map, Brain, PhoneCall, BarChart3, BellRing, ArrowRight } from 'lucide-react';
+import { Map, Brain, PhoneCall, BarChart3, BellRing, ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -8,7 +8,7 @@ export default function HomePage() {
       {/* Top Navbar */}
       <header className="px-6 py-5 max-w-7xl mx-auto w-full flex items-center justify-between border-b border-slate-800">
         <div className="flex items-center space-x-2.5">
-          <ShieldAlert className="h-7 w-7 text-blue-500 animate-pulse" />
+          <img src="/logo.png" alt="Logo" className="h-7 w-7 object-contain rounded-md" />
           <span className="text-xl font-bold tracking-tight text-white">FloodGuard AI</span>
         </div>
         <div className="flex items-center space-x-4">

@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { RegisterForm } from '@/components/auth/RegisterForm';
-import { ShieldAlert } from 'lucide-react';
+
 import Link from 'next/link';
 
 export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6">
       <div className="flex items-center space-x-2.5 mb-8">
-        <ShieldAlert className="h-8 w-8 text-blue-600" />
+        <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain rounded-md" />
         <span className="text-2xl font-bold tracking-tight text-slate-800">FloodGuard AI</span>
       </div>
       <RegisterForm />
