@@ -28,12 +28,18 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex flex-col w-64 bg-slate-900 border-r border-slate-800 text-slate-300 h-screen sticky top-0">
+    <aside className="hidden md:flex flex-col w-80 bg-slate-900 border-r border-slate-800 text-slate-300 h-screen sticky top-0">
       {/* Header / Branding */}
-      <div className="flex items-center space-x-2.5 px-6 py-5 border-b border-slate-800 bg-slate-950">
-        <img src="/logo.png" alt="Logo" className="h-7 w-7 object-contain rounded-md" />
-        <span className="text-lg font-bold tracking-tight text-white">FloodGuard AI</span>
-      </div>
+     <div className="flex items-center gap-0 px-4 py-4 border-b border-slate-800">
+    <img
+      src="/logo.png"
+      alt="FloodGuard AI logo"
+      className="h-15 w-13 mx-2  "
+    />
+    <span className="font-bold tracking-tight text-white truncate text-lg">
+      FloodGuard AI
+    </span>
+  </div>
 
       {/* Nav List */}
       <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">

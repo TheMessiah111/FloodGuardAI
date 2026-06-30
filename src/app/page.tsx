@@ -8,8 +8,8 @@ export default function HomePage() {
       {/* Top Navbar */}
       <header className="px-6 py-5 max-w-7xl mx-auto w-full flex items-center justify-between border-b border-slate-800">
         <div className="flex items-center space-x-2.5">
-          <img src="/logo.png" alt="Logo" className="h-7 w-7 object-contain rounded-md" />
-          <span className="text-xl font-bold tracking-tight text-white">FloodGuard AI</span>
+          <img src="/logo.png" alt="Logo" className="h-18 w-13  object-cover rounded-md" />
+          <span className="text-4xl font-bold tracking-tight  text-white">FloodGuard AI</span>
         </div>
         <div className="flex items-center space-x-4">
           <Link href="/login" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors">
@@ -36,7 +36,7 @@ export default function HomePage() {
         </h1>
 
         <p className="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed">
-          A Computer Science final-year research project utilizing hydro-meteorological telemetries and heuristic predictions to safeguard local Nigerian communities along active river basins.
+          A Computer Science penultimate year research project utilizing hydro-meteorological telemetries and heuristic predictions to safeguard local Nigerian communities along active river basins.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -102,7 +102,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="px-6 py-6 border-t border-slate-800/80 bg-slate-950 text-center text-xs text-slate-500 font-medium">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>Computer Science Final Year Project — FloodGuard AI © 2026</p>
+          <p>Computer Science Penultimate Year Project — FloodGuard AI © 2026</p>
           <p className="hover:text-slate-400 transition-colors">Preparedness through predictive engineering</p>
         </div>
       </footer>
