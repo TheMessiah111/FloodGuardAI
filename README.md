@@ -1,6 +1,6 @@
 # FloodGuard AI
 
-An AI-based Early Warning System for Flood Prediction and Hazard Management in Nigerian Communities. Built as a Computer Science final-year research project.
+An AI-based Early Warning System for Flood Prediction and Hazard Management in Nigerian Communities. Built as a Computer Science penultimate-year research project.
 
 ## Project Abstract
 FloodGuard AI is a lightweight, responsive web application designed to demonstrate the application of software engineering principles and heuristic model simulation in flood management. The system aggregates hydrometeorological parameters (rainfall, river level, soil moisture, humidity, wind speed, temperature) to calculate regional flood risk indices in real time. If warning thresholds are breached, the system auto-triggers alerts for municipal planning agencies, safety services (NEMA), and local communities.
