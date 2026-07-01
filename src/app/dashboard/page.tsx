@@ -57,11 +57,11 @@ export default function DashboardPage() {
   return (
     <DashboardLayout>
       <PageHeader
-        title="Control Panel"
+        title="Dashboard"
         description="Hydro-meteorological early warning system for Nigerian communities"
       />
 
-      <div className="space-y-6">
+      <div className="space-y-2">
         {/* Stats Section */}
         <DashboardStats
           totalPredictions={stats.totalPredictions}
@@ -73,27 +73,23 @@ export default function DashboardPage() {
         {/* Dashboard Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content Column */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 min-w-0">
             <RainfallChart />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <RecentPredictions predictions={stats.recentPredictions} />
-              <LatestAlerts alerts={stats.latestAlerts} />
-            </div>
           </div>
-
-          {/* Sidebar Column */}
-          <div className="space-y-6">
+              <RecentPredictions predictions={stats.recentPredictions} /> 
+              <LatestAlerts alerts={stats.latestAlerts} />
             <RiskOverview
               lowCount={low}
               mediumCount={med}
               highCount={high}
               criticalCount={crit}
             />
-            <WeatherSummary weatherData={weatherData} />
-            <FloodMapPreview />
+            <WeatherSummary weatherData={weatherData}/>
+            
           </div>
+          <FloodMapPreview />
         </div>
-      </div>
+      
     </DashboardLayout>
   );
 }

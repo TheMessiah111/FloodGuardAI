@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function FloodMapPreview() {
   return (
-    <Card className="flex flex-col h-full bg-slate-50 border-blue-100 hover:shadow-md transition-all duration-200">
+    <Card className=" h-auto w-auto align-middle  bg-slate-50 border-blue-100 hover:shadow-md transition-all duration-200">
       <CardHeader className="pb-2">
         <CardTitle className="text-slate-800 flex items-center space-x-2">
           <Map className="h-5 w-5 text-blue-600" />
@@ -14,7 +14,7 @@ export function FloodMapPreview() {
         <CardDescription>Visual risk monitoring coordinates</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col justify-between space-y-4">
-        <div className="relative h-32 rounded-lg bg-blue-100 border border-blue-200 overflow-hidden flex items-center justify-center">
+        <div className="relative h-100 rounded-lg bg-blue-100 border border-blue-200 overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
           <div className="absolute w-full h-4 bg-blue-500/30 blur-[2px] top-1/2 left-0 transform -translate-y-1/2 rotate-[-5deg]" />
           <span className="absolute text-[8px] tracking-wider text-blue-600 font-bold uppercase top-1/3 left-1/3 transform -rotate-[5deg]">
@@ -32,10 +32,10 @@ export function FloodMapPreview() {
         <div className="pt-2">
           <Link
             href="/map"
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+            className="inline-flex items-center space-x-1.5 text-2xl font-semibold text-blue-600 hover:text-blue-700 transition-colors"
           >
             <span>Launch interactive map</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
       </CardContent>
